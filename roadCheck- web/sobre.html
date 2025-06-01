@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Road Analytics</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .sobre-main {
+            display: flex;
+            align-items: stretch;
+            min-height: 100vh;
+            background: var(--dark-bg);
+        }
+        .sobre-img {
+            flex: 1;
+            background: url('carrossel/1.jpg') center/cover no-repeat;
+            min-height: 400px;
+        }
+        .sobre-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 40px;
+            background: var(--darker-bg);
+        }
+        .sobre-content h4 {
+            color: var(--primary-color);
+            letter-spacing: 2px;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .sobre-content h1 {
+            color: var(--text-color);
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .sobre-content .sobre-destaque {
+            color: var(--text-color);
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .sobre-content p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        .sobre-icon {
+            color: var(--primary-color);
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 900px) {
+            .sobre-main { flex-direction: column; }
+            .sobre-img { min-height: 200px; }
+        }
+        .sobre-bloco-destaque {
+            background: var(--dark-bg);
+            padding: 60px 0 40px 0;
+        }
+        .bloco-destaque-container {
+            display: flex;
+            align-items: stretch;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 0;
+        }
+        .bloco-destaque-texto {
+            flex: 1;
+            background: var(--dark-bg);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 40px 40px 0;
+        }
+        .mini-title {
+            color: var(--primary-color);
+            font-size: 0.95em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .bloco-destaque-texto h2 {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .bloco-destaque-p1 {
+            color: #ff6f3c;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .bloco-destaque-p2 {
+            color: var(--text-secondary);
+        }
+        .bloco-destaque-imagem {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bloco-destaque-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0 8px 8px 0;
+            min-height: 350px;
+        }
+        .bloco-destaque-cards {
+            position: absolute;
+            left: 30px;
+            top: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            z-index: 2;
+        }
+        .destaque-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            min-width: 220px;
+        }
+        .destaque-card-azul {
+            background: var(--primary-color);
+            color: #0a0a1a;
+        }
+        .destaque-card-branco {
+            background: #fff;
+            color: #0a0a1a;
+        }
+        .destaque-card i {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .destaque-num {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .destaque-label {
+            font-size: 1em;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+        @media (max-width: 900px) {
+            .bloco-destaque-container {
+                flex-direction: column;
+            }
+            .bloco-destaque-imagem img {
+                border-radius: 0 0 8px 8px;
+                min-height: 200px;
+            }
+            .bloco-destaque-texto {
+                padding: 30px 0 0 0;
+            }
+            .bloco-destaque-cards {
+                position: static;
+                grid-template-columns: 1fr;
+                margin-top: -60px;
+            }
+        }
+        .sobre-main-centralizada {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            background: var(--dark-bg);
+            gap: 40px;
+        }
+        .sobre-content-centralizada {
+            flex: 1;
+            max-width: 500px;
+            background: var(--darker-bg);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+        }
+        .sobre-img-menor {
+            flex: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sobre-img-menor img {
+            width: 320px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+        }
+        @media (max-width: 900px) {
+            .sobre-main-centralizada {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .sobre-img-menor img {
+                width: 90vw;
+                max-width: 320px;
+                height: 180px;
+            }
+        }
+        .menu-section {
+            display: flex;
+            background: #fafafa;
+            padding: 0;
+            min-height: 400px;
+        }
+        .menu-image {
+            flex: 1.2;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+        }
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+        }
+        .menu-icon {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary-color);
+            padding: 18px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .menu-icon i {
+            font-size: 2em;
+            color: #fff;
+        }
+        .menu-list {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 0 0 30px;
+            gap: 0;
+        }
+        .menu-row {
+            display: grid;
+            grid-template-columns: 1.5fr 0.5fr 1.5fr 0.5fr;
+            align-items: center;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 18px 0;
+        }
+        .menu-row.destaque {
+            background: #232323;
+            color: #fff;
+        }
+        .menu-row.destaque .item-title,
+        .menu-row.destaque .item-price {
+            color: #fff;
+        }
+        .item-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #232323;
+        }
+        .item-price {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.1em;
+        }
+        @media (max-width: 900px) {
+            .menu-section {
+                flex-direction: column;
+            }
+            .menu-list {
+                padding: 0 10px;
+            }
+            .menu-row {
+                grid-template-columns: 1fr 1fr;
+                padding: 12px 0;
+            }
+        }
+        .bloco-explicativo {
+            background: var(--dark-bg);
+            padding: 60px 0 40px 0;
+        }
+        .explicativo-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .explicativo-titulo h2 {
+            color: var(--primary-color);
+            font-size: 2.2em;
+            font-weight: bold;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        .explicativo-descricao p {
+            font-size: 1.15em;
+            color: var(--text-color);
+            margin-bottom: 18px;
+        }
+        .explicativo-beneficios {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+        .explicativo-beneficios li {
+            margin-bottom: 12px;
+            font-size: 1.08em;
+            color: var(--text-color);
+            padding-left: 0.5em;
+            position: relative;
+        }
+        .explicativo-beneficios li:before {
+            content: '•';
+            color: var(--primary-color);
+            font-size: 1.2em;
+            position: absolute;
+            left: -1em;
+            top: 0.1em;
+        }
+        .destaque {
+            color: #ff6f3c;
+            font-weight: bold;
+        }
+        .explicativo-titulo2 h3 {
+            font-size: 1.4em;
+            color: var(--primary-color);
+            margin-bottom: 22px;
+            margin-top: 18px;
+        }
+        .explicativo-cards {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .explicativo-card {
+            background: var(--darker-bg);
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            padding: 24px 20px 18px 20px;
+            flex: 1 1 300px;
+            min-width: 260px;
+            max-width: 340px;
+            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .card-titulo {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card-titulo i {
+            font-size: 1.2em;
+        }
+        .card-texto {
+            color: var(--text-color);
+            font-size: 1em;
+        }
+        .card-solucao {
+            color: #00b894;
+            font-weight: bold;
+        }
+        @media (max-width: 900px) {
+            .explicativo-cards {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .explicativo-card {
+                max-width: 100%;
+            }
+        }
+        .hero {
+            padding: 4rem 2rem;
+        }
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Logo" class="logo-img">
+            ROAD ANALYTICS
+        </div>
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="analise.html">ANÁLISE</a>
+            <a href="sobre.html" class="active">SOBRE</a>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </nav>
+    <div class="sobre-main sobre-main-centralizada">
+        <div class="sobre-content sobre-content-centralizada">
+            <span class="sobre-icon"><i class="fas fa-industry"></i></span>
+            <h4>BEM VINDO AO FUTURO</h4>
+            <h1>Nossa Ferramenta</h1>
+            <div class="sobre-destaque">
+                Uma nova forma de avaliar degradação de vias e estradas!
+            </div>
+            <p>
+                Estudo revela que 30% das empresas de logística sofrem prejuízos devido a má condições das estradas, enquanto municípios gastam até 40% mais em reparos por falta de monitoramento preventivo.
+            </p>
+        </div>
+        <div class="sobre-img-menor">
+            <img src="carrossel/1.jpg" alt="Sobre nós">
+        </div>
+    </div>
+
+    <!-- Bloco inspirado no print -->
+    <section class="sobre-bloco-destaque">
+        <div class="bloco-destaque-container">
+            <div class="bloco-destaque-texto">
+                <span class="mini-title">ROAD ANALYTICS</span>
+                <h2>Impacto Econômico da Má Qualidade das Estradas</h2>
+                <p class="bloco-destaque-p1">De acordo com a CNT (Confederação Nacional do Transporte, 2023), 61% das estradas brasileiras apresentam deficiências, sendo que:</p>
+                <p class="bloco-destaque-p2">Um relatório da ABCR (Associação Brasileira de Concessionárias de Rodovias, 2022) aponta que:
+
+                    Empresas de transporte perdem R$ 2,3 bilhões/ano com avarias em veículos devido a estradas ruins.</p>
+            </div>
+            <div class="bloco-destaque-imagem">
+                <img src="carrossel/2.jpg" alt="Equipe analisando estradas">
+                <div class="bloco-destaque-cards">
+                    <div class="destaque-card destaque-card-azul">
+                        <i class="fas fa-road"></i>
+                        <div class="destaque-num">28%</div>
+                        <div class="destaque-label">têm problemas no pavimento (buracos, trincas).</div>
+                    </div>
+                    <div class="destaque-card destaque-card-branco">
+                        <i class="fas fa-users"></i>
+                        <div class="destaque-num">19%</div>
+                        <div class="destaque-label">possuem sinalização inadequada.
+                        </div>
+                    </div>
+                    <div class="destaque-card destaque-card-azul">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div class="destaque-num">14%</div>
+                        <div class="destaque-label">têm problemas de drenagem, aumentando riscos de acidentes.
+                        </div>
+                    </div>
+                    <div class="destaque-card destaque-card-branco">
+                        <i class="fas fa-truck"></i>
+                        <div class="destaque-num">35% </div>
+                        <div class="destaque-label">em prejuízos anuais para transportadoras.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bloco explicativo moderno -->
+    <section class="bloco-explicativo">
+      <div class="explicativo-container">
+        <div class="explicativo-titulo">
+          <h2>Como a Ferramenta Pode Melhorar o Mercado?</h2>
+        </div>
+        <div class="explicativo-descricao">
+          <p>
+            A solução proposta utiliza <strong>IA e visão computacional</strong> para analisar imagens de estradas e classificar sua qualidade em tempo real. Benefícios incluem:
+          </p>
+          <ul class="explicativo-beneficios">
+            <li><strong>Redução de custos:</strong> Empresas de transporte podem evitar rotas degradadas, economizando até <span class="destaque">15% em manutenção de frota</span> (FGV, 2023).</li>
+            <li><strong>Otimização de recursos públicos:</strong> Prefeituras e concessionárias podem priorizar reparos com base em dados, reduzindo gastos em até <span class="destaque">25%</span> (IPEA, 2021).</li>
+            <li><strong>Segurança viária:</strong> A PRF estima que <span class="destaque">23% dos acidentes</span> são causados por malas condições das vias – a ferramenta ajudaria a identificar pontos críticos.</li>
+          </ul>
+        </div>
+        <div class="explicativo-titulo2">
+          <h3>Quem Mais Precisa Dessa Solução?</h3>
+        </div>
+        <div class="explicativo-cards">
+          <div class="explicativo-card">
+            <div class="card-titulo"><i class="fas fa-truck"></i> Empresas de Logística e Transporte</div>
+            <div class="card-texto">
+              <span class="destaque">30% não usam monitoramento avançado</span><br>
+              Dados da ANTT: Apenas 40% das transportadoras utilizam sistemas de roteirização inteligente.<br>
+              <span class="card-solucao">Solução:</span> Integração com apps como Google Maps e Waze, alertando motoristas sobre trechos perigosos.
+            </div>
+          </div>
+          <div class="explicativo-card">
+            <div class="card-titulo"><i class="fas fa-road"></i> Concessionárias de Rodovias</div>
+            <div class="card-texto">
+              <span class="destaque">45% dependem de vistorias manuais</span><br>
+              Segundo a ARTESP, inspeções manuais aumentam custos em 30%.<br>
+              <span class="card-solucao">Solução:</span> Automação da análise via imagens de drones ou câmeras veiculares.
+            </div>
+          </div>
+          <div class="explicativo-card">
+            <div class="card-titulo"><i class="fas fa-city"></i> Governos Municipais</div>
+            <div class="card-texto">
+              <span class="destaque">60% não têm sistemas preditivos</span><br>
+              IBGE (2023): Apenas 12% das cidades brasileiras usam tecnologia para gestão viária.<br>
+              <span class="card-solucao">Solução:</span> Priorização de reparos com base em dados, reduzindo burocracia.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nova seção: Passos da Análise -->
+    <section class="analise-passos-section bloco-explicativo">
+        <div class="explicativo-container">
+            <div class="explicativo-titulo">
+                <h2>Passos da Análise</h2>
+            </div>
+            <div class="analise-steps-container">
+                <div class="analise-step">
+                    <div class="step-icon"><i class="fas fa-database"></i></div>
+                    <div class="step-content">
+                        <h3>Criação de Datasets</h3>
+                        <p>
+                            Criamos vários datasets para "ensinar" o nosso modelo os tipos de pavimento que ele precisaria ser capaz de identificar.
+                        </p>
+                    </div>
+                </div>
+                <div class="analise-step">
+                     <div class="step-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="step-content">
+                        <h3>Treinamento do Modelo</h3>
+                        <p>
+                            Durante o treinamento o modelo será capaz de começar a identificar a qualidade do asfalto.
+                        </p>
+                    </div>
+                </div>
+                <div class="analise-step">
+                     <div class="step-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="step-content">
+                        <h3>Resultados da Acurácia</h3>
+                        <p>
+                            Usando a biblioteca Matplotlib no Python conseguimos ver o gráfico da curva que a acurácia está atingindo, assim podemos saber se o nosso modelo está aprendendo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nova seção para Imagens -->
+    <section class="analise-imagens-section bloco-explicativo">
+        <div class="explicativo-container">
+            <div class="explicativo-titulo">
+                <h2>Exemplos Visuais</h2>
+            </div>
+            <div class="analise-imagens-container">
+                <img src="1.png" alt="Exemplo 1 da Análise">
+                <img src="2.png" alt="Exemplo 2 da Análise">
+            </div>
+        </div>
+    </section>
+</body>
+</html> 

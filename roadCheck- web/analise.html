@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Estradas - IA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Logo" class="logo-img">
+            ROAD ANALYTICS
+        </div>
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="analise.html" class="active">ANÁLISE</a>
+            <a href="sobre.html">SOBRE</a>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Análise de Estradas</h1>
+            <p>Upload de imagem para análise de condições da estrada</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-area" id="dropZone">
+                    <img id="preview" src="" alt="" style="display: none; max-width: 100%;">
+                    <div class="upload-placeholder">
+                        <p>Arraste uma imagem aqui ou</p>
+                        <input type="file" id="fileInput" accept="image/*" hidden>
+                        <button onclick="document.getElementById('fileInput').click()">Selecione um arquivo</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-history">
+                <h2>Histórico de Análises</h2>
+                <div id="analysisHistory" class="analysis-grid">
+                    <!-- O histórico de análises será inserido aqui -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
